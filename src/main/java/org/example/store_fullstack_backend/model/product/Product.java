@@ -1,15 +1,19 @@
 package org.example.store_fullstack_backend.model.product;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Data carrier class for Product objects containing relevant information for them
  */
+@Entity
 public class Product {
     /**
      * ID of the product
      */
+    @Id
     private int id;
 
     /**
@@ -30,7 +34,11 @@ public class Product {
     /**
      * Categories this product falls under. see {@link org.example.store_fullstack_backend.model.product.Category}
      */
+    @ElementCollection(targetClass = Category.class)  // Tell it this is a collection of Categories
+    @Enumerated(EnumType.STRING)  // Tell it to store each enum as a String
     private List<Category> categories;
+
+    public Product() {}
 
     /**
      * Creates a new product
@@ -86,6 +94,26 @@ public class Product {
      */
     public List<Category> getCategories() {
         return categories;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setProdName(String prodName) {
+        this.prodName = prodName;
+    }
+
+    public void setProdDesc(String prodDesc) {
+        this.prodDesc = prodDesc;
+    }
+
+    public void setProdPrice(double prodPrice) {
+        this.prodPrice = prodPrice;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     /**
