@@ -31,7 +31,7 @@ public class ProductController {
 
     /**
      * Adds a product to the list of managed products. see {@link org.example.store_fullstack_backend.model.product.Product}<br><br>
-     * Functionally the same as updateProduct(Product product)
+     * Functionally the same as {@code updateProduct(Product product)}
      * @param product product to add, serialized automatically by Jackson
      */
     @PostMapping("/products")
@@ -41,7 +41,7 @@ public class ProductController {
 
     /**
      * Updates an existing product with a matching id. see {@link org.example.store_fullstack_backend.model.product.Product}<br><br>
-     * Functionally the same as addProduct(Product product)
+     * Functionally the same as {@code addProduct(Product product)}
      * @param product product to replace the product with a matching id, serialized automatically by Jackson
      */
     @PutMapping("/products")
@@ -57,5 +57,14 @@ public class ProductController {
     @GetMapping("/products")
     public List<Product> getProducts(@RequestParam(value="cat", required=false) List<String> categories) {
         return productService.getProducts(categories);
+    }
+
+    /**
+     * Delete a product based on it's id
+     * @param productId {@code int} id of product you want to delete
+     */
+    @DeleteMapping("/products")
+    public void deleteProduct(@RequestParam(value="id") int productId) {
+        productService.deleteProduct(productId);
     }
 }
