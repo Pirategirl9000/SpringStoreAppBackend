@@ -3,13 +3,7 @@ package org.example.store_fullstack_backend.controller;
 import org.example.store_fullstack_backend.model.product.Product;
 import org.example.store_fullstack_backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -36,12 +30,23 @@ public class ProductController {
     }
 
     /**
-     * Adds a product to the list of managed products. see {@link org.example.store_fullstack_backend.model.product.Product}
+     * Adds a product to the list of managed products. see {@link org.example.store_fullstack_backend.model.product.Product}<br><br>
+     * Functionally the same as updateProduct(Product product)
      * @param product product to add, serialized automatically by Jackson
      */
     @PostMapping("/products")
     public void addProduct(@RequestBody Product product) {
-        productService.addProduct(product);
+        productService.saveProduct(product);
+    }
+
+    /**
+     * Updates an existing product with a matching id. see {@link org.example.store_fullstack_backend.model.product.Product}<br><br>
+     * Functionally the same as addProduct(Product product)
+     * @param product product to replace the product with a matching id, serialized automatically by Jackson
+     */
+    @PutMapping("/products")
+    public void updateProduct(@RequestBody Product product) {
+        productService.saveProduct(product);
     }
 
     /**
