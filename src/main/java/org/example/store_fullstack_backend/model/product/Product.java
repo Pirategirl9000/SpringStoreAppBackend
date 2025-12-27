@@ -3,6 +3,9 @@ package org.example.store_fullstack_backend.model.product;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data carrier class for Product objects containing relevant information for them
+ */
 public class Product {
     /**
      * ID of the product
