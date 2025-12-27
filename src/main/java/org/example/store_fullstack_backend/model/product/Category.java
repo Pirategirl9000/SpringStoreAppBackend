@@ -6,5 +6,6 @@ public enum Category {
     TOY,
     FOOD,
     CLOTHING,
-    JEWELRY
+    JEWELRY,
+    BOOK
 }
