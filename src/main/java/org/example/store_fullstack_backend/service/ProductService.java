@@ -16,6 +16,11 @@ public class ProductService {
      */
     private List<Product> products = new ArrayList<>();
 
+    /**
+     * Gets products with matching categories, returns all if no categories are provided
+     * @param categories {@code List<String>} list of categories to filter the products based on see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @return {@code List<Product>} list of products with matching categories. see {@link org.example.store_fullstack_backend.model.product.Product}
+     */
     public List<Product> getProducts(List<String> categories) {
         if (categories == null || categories.isEmpty()) {
             return products;
