@@ -12,6 +12,9 @@ import java.util.List;
  */
 @Service
 public class ProductService {
+    /**
+     * Manages the database. see {@link org.example.store_fullstack_backend.repository.ProductRepo}
+     */
     ProductRepo repo;
 
     /**
@@ -29,6 +32,10 @@ public class ProductService {
         }
     }
 
+    /**
+     * Sets the product repository handler through Spring autowiring. see {@link org.example.store_fullstack_backend.repository.ProductRepo}
+     * @param repo ProductRepo to add
+     */
     @Autowired
     public void setRepo(ProductRepo repo) {
         this.repo = repo;
@@ -40,5 +47,13 @@ public class ProductService {
      */
     public void saveProduct(Product product) {
         repo.save(product);
+    }
+
+    /**
+     * Deletes a product by its id
+     * @param productId the id of the product to be deleted
+     */
+    public void deleteProduct(int productId) {
+        repo.deleteById(productId);
     }
 }
