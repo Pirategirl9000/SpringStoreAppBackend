@@ -33,7 +33,7 @@ public class ProductController {
      * @param product product to add, serialized automatically by Jackson
      */
     @PostMapping("/products")
-    public void addProduct(Product product) {
+    public void addProduct(@RequestBody Product product) {
         productService.addProduct(product);
     }
 
