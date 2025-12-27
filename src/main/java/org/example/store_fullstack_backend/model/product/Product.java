@@ -4,10 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
+    /**
+     * ID of the product
+     */
     private int id;
+
+    /**
+     * Name of the product
+     */
     private String prodName;
+
+    /**
+     * Short description for the product
+     */
     private String prodDesc;
+
+    /**
+     * Price of the product
+     */
     private double prodPrice;
+
+    /**
+     * Categories this product falls under. see {@link org.example.store_fullstack_backend.model.product.Category}
+     */
     private List<Category> categories;
 
     /**
@@ -16,7 +35,7 @@ public class Product {
      * @param prodName Name of the product
      * @param prodDesc Description for the product
      * @param prodPrice Price of the product
-     * @param categories List of categories that the product falls under
+     * @param categories {@code List<Category>} that the product falls under
      */
     public Product(int id, String prodName, String prodDesc, double prodPrice, List<Category> categories) {
         this.id = id;
@@ -28,7 +47,7 @@ public class Product {
 
     /**
      * Returns the id of the product
-     * @return integer id
+     * @return {@code integer} id
      */
     public int getId() {
         return id;
@@ -36,24 +55,41 @@ public class Product {
 
     /**
      * Returns the product name
-     * @return String product name
+     * @return {@code String} product name
      */
     public String getProdName() {
         return prodName;
     }
 
+    /**
+     * Returns a short description for the product
+     * @return {@code String} description
+     */
     public String getProdDesc() {
         return prodDesc;
     }
 
+    /**
+     * Returns the product's price
+     * @return {@code double} product price
+     */
     public double getProdPrice() {
         return prodPrice;
     }
 
+    /**
+     * Returns an immutable list of the categories belonging to the product
+     * @return <code>List&lt;Category&gt;</code>
+     */
     public List<Category> getCategories() {
         return categories;
     }
 
+    /**
+     * Returns whether the product has(at least) all the listed categories
+     * @param category {@code List<String>} of categories. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @return {@code true} if all categories exist, else {@code false}
+     */
     public boolean hasCategories(List<String> category) {
         for (Category c : categories) {
             if (!(this.categories.contains(c))) {
@@ -64,6 +100,10 @@ public class Product {
         return true;
     }
 
+    /**
+     * Returns a stringified version of this class based on it's attributes
+     * @return {@code String} version of the object
+     */
     @Override
     public String toString() {
         return "Product{" +
