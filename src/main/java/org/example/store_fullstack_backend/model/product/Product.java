@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class Product {
     /**
-     * ID of the product
+     * ID of the product, functions as the primary key
      */
     @Id
     private int id;
@@ -38,6 +38,9 @@ public class Product {
     @Enumerated(EnumType.STRING)  // Tell it to store each enum as a String
     private List<Category> categories;
 
+    /**
+     * Default constructor for product, necessary for entities in the JPA
+     */
     public Product() {}
 
     /**
@@ -90,28 +93,48 @@ public class Product {
 
     /**
      * Returns an immutable list of the categories belonging to the product
-     * @return <code>List&lt;Category&gt;</code>
+     * @return {@code List<Category>} list of categories for the object
      */
     public List<Category> getCategories() {
         return categories;
     }
 
+    /**
+     * Sets the id of the product, functions as the primary key
+     * @param id {@code int} id of the product
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Sets the product's name
+     * @param prodName the new name for the product
+     */
     public void setProdName(String prodName) {
         this.prodName = prodName;
     }
 
+    /**
+     * Sets the product's description
+     * @param prodDesc the new description for the product
+     */
     public void setProdDesc(String prodDesc) {
         this.prodDesc = prodDesc;
     }
 
+    /**
+     * Sets the product's price
+     * @param prodPrice the new price for the product
+     */
     public void setProdPrice(double prodPrice) {
         this.prodPrice = prodPrice;
     }
 
+    /**
+     * Sets the categories of the product. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @param categories the new category list for the product
+     */
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
