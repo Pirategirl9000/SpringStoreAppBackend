@@ -90,12 +90,20 @@ public class Product {
 
     /**
      * Returns whether the product has(at least) all the listed categories
-     * @param category {@code List<String>} of categories. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @param passedCategories {@code List<String>} of categories. see {@link org.example.store_fullstack_backend.model.product.Category}
      * @return {@code true} if all categories exist, else {@code false}
      */
-    public boolean hasCategories(List<String> category) {
-        for (Category c : categories) {
-            if (!(this.categories.contains(c))) {
+    public boolean hasCategories(List<String> passedCategories) {
+        for (String c : passedCategories) {
+            Category cat;
+
+            try {
+                cat = Category.valueOf(c.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                return false;
+            }
+
+            if (!(this.categories.contains(cat))) {
                 return false;
             }
         }
