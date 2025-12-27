@@ -38,21 +38,12 @@ public class ProductController {
     }
 
     /**
-     * Returns a list of all the products currently manaaged. see {@link org.example.store_fullstack_backend.model.product.Product}
-     * @return {@code List<Product>} list of products, serialized automatically by Jackson
-     */
-    @GetMapping("/products")
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
-    }
-
-    /**
-     * Returns a list of all products matchin the specified categories. see {@link org.example.store_fullstack_backend.model.product.Product}
+     * Returns a list of all products matching the specified categories, if none are specified returns all products. see {@link org.example.store_fullstack_backend.model.product.Product}
      * @param categories {@code List<String>} list of categories(as strings) that matches the enum signature for categories. see {@link org.example.store_fullstack_backend.model.product.Category}
      * @return {@code List<Product>} list of products with matching categories. serialized automatically by Jackson
      */
-    @GetMapping("/products/")
-    public List<Product> getProductsByCategory(@RequestParam List<String> categories) {
-        return productService.getProductsByCategory(categories);
+    @GetMapping("/products")
+    public List<Product> getProducts(@RequestParam(value="cat", required=false) List<String> categories) {
+        return productService.getProducts(categories);
     }
 }

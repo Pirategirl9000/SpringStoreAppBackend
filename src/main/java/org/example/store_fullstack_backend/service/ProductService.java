@@ -16,23 +16,14 @@ public class ProductService {
      */
     private List<Product> products = new ArrayList<>();
 
-    /**
-     * Returns all products regardless of category. see {@link org.example.store_fullstack_backend.model.product.Product}
-     * @return {@code List<Product>} list of all the products
-     */
-    public List<Product> getAllProducts() {
-        return products;
-    }
-
-    /**
-     * Returns all products that contain the list of categories. see {@link org.example.store_fullstack_backend.model.product.Product}
-     * @param categories list of categories to check for. see {@link org.example.store_fullstack_backend.model.product.Category}
-     * @return {@code List<Product>} list of all products matching the specified categories
-     */
-    public List<Product> getProductsByCategory(List<String> categories) {
-        return products.stream()
-                .filter(prod -> prod.hasCategories(categories))
-                .toList();
+    public List<Product> getProducts(List<String> categories) {
+        if (categories == null || categories.isEmpty()) {
+            return products;
+        } else {
+            return products.stream()
+                    .filter(prod -> prod.hasCategories(categories))
+                    .toList();
+        }
     }
 
     /**
