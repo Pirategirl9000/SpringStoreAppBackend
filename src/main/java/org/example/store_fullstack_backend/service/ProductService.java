@@ -56,4 +56,12 @@ public class ProductService {
     public void deleteProduct(int productId) {
         repo.deleteById(productId);
     }
+
+    /**
+     * Returns all distinct categories from the product table
+     * @return {@code String} all unique categories
+     */
+    public List<String> getDistinctCategories() {
+        return repo.getDistinctCategories();
+    }
 }
