@@ -1,10 +1,8 @@
 package org.example.store_fullstack_backend.model;
 
 import jakarta.persistence.Id;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ElementCollection;
-import jakarta.persistence.EnumType;
 
 import java.util.ArrayList;
 import java.util.List;
