@@ -37,6 +37,16 @@ public class ProductController {
     }
 
     /**
+     * Returns a list of all products matching the specified categories, if none are specified returns all products. see {@link org.example.store_fullstack_backend.model.product.Product}
+     * @param categories {@code List<String>} list of categories(as strings) that matches the enum signature for categories. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @return {@code List<Product>} list of products with matching categories. serialized automatically by Jackson
+     */
+    @GetMapping("/products")
+    public List<Product> getProducts(@RequestParam(value="cat", required=false) List<String> categories) {
+        return productService.getProducts(categories);
+    }
+
+    /**
      * Adds a product to the list of managed products. see {@link org.example.store_fullstack_backend.model.product.Product}<br><br>
      * Functionally the same as {@code updateProduct(Product product)}
      * @param product product to add, serialized automatically by Jackson
@@ -54,16 +64,6 @@ public class ProductController {
     @PutMapping("/products")
     public void updateProduct(@RequestBody Product product) {
         productService.saveProduct(product);
-    }
-
-    /**
-     * Returns a list of all products matching the specified categories, if none are specified returns all products. see {@link org.example.store_fullstack_backend.model.product.Product}
-     * @param categories {@code List<String>} list of categories(as strings) that matches the enum signature for categories. see {@link org.example.store_fullstack_backend.model.product.Category}
-     * @return {@code List<Product>} list of products with matching categories. serialized automatically by Jackson
-     */
-    @GetMapping("/products")
-    public List<Product> getProducts(@RequestParam(value="cat", required=false) List<String> categories) {
-        return productService.getProducts(categories);
     }
 
     /**
