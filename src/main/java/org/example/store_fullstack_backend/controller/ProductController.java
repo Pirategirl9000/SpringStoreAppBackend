@@ -37,6 +37,15 @@ public class ProductController {
     }
 
     /**
+     * Returns a list of all unique categories within the product table
+     * @return {@code List<String>} all distinct categories which there are products using
+     */
+    @GetMapping("/products/categories")
+    public List<String> getDistinctCategories() {
+        return productService.getDistinctCategories();
+    }
+
+    /**
      * Returns a list of all products matching the specified categories, if none are specified returns all products. see {@link org.example.store_fullstack_backend.model.product.Product}
      * @param categories {@code List<String>} list of categories(as strings) that matches the enum signature for categories. see {@link org.example.store_fullstack_backend.model.product.Category}
      * @return {@code List<Product>} list of products with matching categories. serialized automatically by Jackson
