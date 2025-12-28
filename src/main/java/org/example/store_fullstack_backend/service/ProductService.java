@@ -1,6 +1,6 @@
 package org.example.store_fullstack_backend.service;
 
-import org.example.store_fullstack_backend.model.product.Product;
+import org.example.store_fullstack_backend.model.Product;
 import org.example.store_fullstack_backend.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class ProductService {
     /**
      * Gets products with matching categories, returns all if no categories are provided
      * @param categories {@code List<String>} list of categories to filter the products based on
-     * @return {@code List<Product>} list of products with matching categories. see {@link org.example.store_fullstack_backend.model.product.Product}
+     * @return {@code List<Product>} list of products with matching categories. see {@link Product}
      */
     public List<Product> getProducts(List<String> categories) {
         if (categories == null || categories.isEmpty()) {
@@ -42,7 +42,7 @@ public class ProductService {
     }
 
     /**
-     * Adds a product to the list of managed products. see {@link org.example.store_fullstack_backend.model.product.Product}
+     * Adds a product to the list of managed products. see {@link Product}
      * @param product product to add
      */
     public void saveProduct(Product product) {

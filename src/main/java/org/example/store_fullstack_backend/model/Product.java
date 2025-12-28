@@ -1,4 +1,4 @@
-package org.example.store_fullstack_backend.model.product;
+package org.example.store_fullstack_backend.model;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Enumerated;
@@ -38,8 +38,7 @@ public class Product {
     /**
      * Categories this product falls under.
      */
-    @ElementCollection(targetClass = String.class)  // Tell it this is a collection of Strings
-    @Enumerated(EnumType.STRING)  // Tell it to store each enum as a String
+    @ElementCollection
     private List<String> categories;
 
     /**
