@@ -36,11 +36,11 @@ public class Product {
     private double prodPrice;
 
     /**
-     * Categories this product falls under. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * Categories this product falls under.
      */
-    @ElementCollection(targetClass = Category.class)  // Tell it this is a collection of Categories
+    @ElementCollection(targetClass = String.class)  // Tell it this is a collection of Strings
     @Enumerated(EnumType.STRING)  // Tell it to store each enum as a String
-    private List<Category> categories;
+    private List<String> categories;
 
     /**
      * Default constructor for product, necessary for entities in the JPA
@@ -55,7 +55,7 @@ public class Product {
      * @param prodPrice Price of the product
      * @param categories {@code List<Category>} that the product falls under
      */
-    public Product(int id, String prodName, String prodDesc, double prodPrice, List<Category> categories) {
+    public Product(int id, String prodName, String prodDesc, double prodPrice, List<String> categories) {
         this.id = id;
         this.prodName = prodName;
         this.prodDesc = prodDesc;
@@ -99,7 +99,7 @@ public class Product {
      * Returns an immutable list of the categories belonging to the product
      * @return {@code List<Category>} list of categories for the object
      */
-    public List<Category> getCategories() {
+    public List<String> getCategories() {
         return categories;
     }
 
@@ -136,27 +136,21 @@ public class Product {
     }
 
     /**
-     * Sets the categories of the product. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * Sets the categories of the product.
      * @param categories the new category list for the product
      */
-    public void setCategories(List<Category> categories) {
+    public void setCategories(List<String> categories) {
         this.categories = categories;
     }
 
     /**
      * Returns whether the product has(at least) all the listed categories
-     * @param passedCategories {@code List<String>} of categories. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @param passedCategories {@code List<String>} of categories.
      * @return {@code true} if all categories exist, else {@code false}
      */
     public boolean hasCategories(List<String> passedCategories) {
         for (String c : passedCategories) {
-            Category cat;
-
-            try {
-                cat = Category.valueOf(c.toUpperCase());
-            } catch (IllegalArgumentException e) {
-                return false;
-            }
+            String cat = c.toUpperCase();
 
             if (!(this.categories.contains(cat))) {
                 return false;

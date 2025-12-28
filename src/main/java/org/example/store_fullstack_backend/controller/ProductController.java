@@ -47,7 +47,7 @@ public class ProductController {
 
     /**
      * Returns a list of all products matching the specified categories, if none are specified returns all products. see {@link org.example.store_fullstack_backend.model.product.Product}
-     * @param categories {@code List<String>} list of categories(as strings) that matches the enum signature for categories. see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @param categories {@code List<String>} list of categories(as strings) that matches the enum signature for categories.
      * @return {@code List<Product>} list of products with matching categories. serialized automatically by Jackson
      */
     @GetMapping("/products")

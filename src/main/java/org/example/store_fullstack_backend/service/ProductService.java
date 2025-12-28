@@ -19,7 +19,7 @@ public class ProductService {
 
     /**
      * Gets products with matching categories, returns all if no categories are provided
-     * @param categories {@code List<String>} list of categories to filter the products based on see {@link org.example.store_fullstack_backend.model.product.Category}
+     * @param categories {@code List<String>} list of categories to filter the products based on
      * @return {@code List<Product>} list of products with matching categories. see {@link org.example.store_fullstack_backend.model.product.Product}
      */
     public List<Product> getProducts(List<String> categories) {
