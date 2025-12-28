@@ -1,6 +1,7 @@
 package org.example.store_fullstack_backend.controller;
 
-import org.example.store_fullstack_backend.model.Product;
+import org.example.store_fullstack_backend.model.product.Product;
+import org.example.store_fullstack_backend.model.product.Category;
 import org.example.store_fullstack_backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,12 +42,12 @@ public class ProductController {
      * @return {@code List<String>} all distinct categories which there are products using
      */
     @GetMapping("/products/categories")
-    public List<String> getDistinctCategories() {
+    public List<Category> getDistinctCategories() {
         return productService.getDistinctCategories();
     }
 
     /**
-     * Returns a list of all products matching the specified categories, if none are specified returns all products. see {@link Product}
+     * Returns a list of all products matching the specified categories, if none are specified returns all products. see {@link org.example.store_fullstack_backend.model.product.Product}
      * @param categories {@code List<String>} list of categories(as strings) that matches the enum signature for categories.
      * @return {@code List<Product>} list of products with matching categories. serialized automatically by Jackson
      */
@@ -56,7 +57,7 @@ public class ProductController {
     }
 
     /**
-     * Adds a product to the list of managed products. see {@link Product}<br><br>
+     * Adds a product to the list of managed products. see {@link org.example.store_fullstack_backend.model.product}<br><br>
      * Functionally the same as {@code updateProduct(Product product)}
      * @param product product to add, serialized automatically by Jackson
      */
@@ -66,7 +67,7 @@ public class ProductController {
     }
 
     /**
-     * Updates an existing product with a matching id. see {@link Product}<br><br>
+     * Updates an existing product with a matching id. see {@link org.example.store_fullstack_backend.model.product.Product}<br><br>
      * Functionally the same as {@code addProduct(Product product)}
      * @param product product to replace the product with a matching id, serialized automatically by Jackson
      */
