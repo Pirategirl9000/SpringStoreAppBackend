@@ -1,8 +1,9 @@
-package org.example.store_fullstack_backend.model;
+package org.example.store_fullstack_backend.model.product;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Column;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class Product {
     /**
      * Short description for the product
      */
+    @Column(columnDefinition = "TEXT")
     private String prodDesc;
 
     /**
